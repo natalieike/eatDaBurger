@@ -1,17 +1,14 @@
-var app = require("express");
+var express = require("express");
 var burger = require("../models/burger.js");
+var router = express.Router();
 
 //Set up parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.text());
+router.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-function Router(){
-	if(!(this instanceof Router)){
-		return new Router();
-	}
-};
+
 
 //export Router
-modules.export = Router;
+modules.export = router;

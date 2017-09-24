@@ -1,17 +1,20 @@
 var express = require("express");
 var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
-var connection = require("/config/connection.js");
+var handlebars = require("express-handlebars");
 
-//SQL Connection
-connection.connect(function(err){
-	if(err){
-		connection.end();
-		return console.log(err);
-	}
-	startApp(connection);
-});
+var port = process.env.PORT || 8080;
 
-var startApp = function(connection){
+app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-};
+app.use(express.static(__dirname + '/public'))
+app.use(require('./controllers'))
+
+app.listen(port, function() {
+  console.log('Listening on port 3000...')
+})
+
+

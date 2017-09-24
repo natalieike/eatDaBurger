@@ -10,5 +10,14 @@ var connection = mysql.createConnection({
 	database: "burgers_db"
 });
 
+//Start Connection
+connection.connect(function(err){
+	if(err){
+		connection.end();
+		return console.log(err);
+	}
+	console.log("Database connected");
+});
+
 //export connection
 modules.export = connection;

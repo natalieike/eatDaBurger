@@ -48,14 +48,30 @@
 		</div> <!--/.row-->
 	</div> <!--/.container-->
 
-	<nav class="navbar navbar-fixed-bottom darkerBlue">
+		<nav class="navbar navbar-fixed-bottom darkerBlue">
   	<div class="container">
-  		<form>
-  			<div class="form-group">
-    			<label for="burgerName">Add a Burger to Eat</label>
-    			<input type="input" class="form-control" id="burgerName" placeholder="Burger Name">
-  			</div> <!--/.form-group-->
-  			<button type="submit" class="btn btn-info">Submit</button>
-			</form>
+  		<div class="navbar-left">
+  			<form method="POST" action="/" class="form-inline">
+  				<div class="form-group">
+    				<label for="burgerName">Add a Burger to Eat</label>
+    				<input type="input" class="form-control" id="burgerName" placeholder="Burger Name">
+  				</div> <!--/.form-group-->
+  				<button type="submit" class="btn btn-info">Submit</button>
+				</form>
+			</div> <!--/.navbar-left-->
+			<div class="navbar-right">
+  			<form action="/?_method=PUT" method="POST" class="form-inline">
+    			<label for="burgerName">Edit a Burger</label>
+  				<select name="id" class="form-control">
+						{{#each burgerAvailable}}
+							<option value="{{this.burger_id}}">{{this.burger_name}}</option>
+						{{/each}}
+					</select>
+  				<div class="form-group">
+    				<input type="input" class="form-control" id="burgerName" placeholder="New Burger Name">
+  				</div> <!--/.form-group-->
+  				<button type="submit" class="btn btn-info">Save</button>
+				</form>				
+			</div> <!--/.navbar-right-->
    	</div> <!--/.container-->
 	</nav>
