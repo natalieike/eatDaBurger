@@ -20,4 +20,4 @@ connection.connect(function(err){
 });
 
 //export connection
-modules.export = connection;
+module.exports = connection;

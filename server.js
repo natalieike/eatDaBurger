@@ -1,20 +1,32 @@
+//Dependencies
 var express = require("express");
 var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
 var handlebars = require("express-handlebars");
+var path = require("path");
+var router = express.Router();
+var brouter = require("./controllers/burgers_controller.js");
 
-var port = process.env.PORT || 8080;
+//Set up Express
+var app = express();
+var PORT = process.env.PORT || 8080;
 
+//Set up method-override, body-parser, and handlebars
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//Send to controller
 app.use(express.static(__dirname + '/public'))
-app.use(require('./controllers'))
+app.use("/", router);
+router.get("/", brouter);
+router.put("/:id", brouter);
+router.get("/style", brouter);
 
-app.listen(port, function() {
-  console.log('Listening on port 3000...')
-})
+//Initialize server
+app.listen(PORT, function() {
+  console.log('Listening on port ' + PORT);
+});
 
 

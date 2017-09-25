@@ -8,4 +8,4 @@ function Orm(){
 };
 
 //Export ORM
-modules.export = Orm;
+module.exports = Orm;

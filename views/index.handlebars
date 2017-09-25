@@ -15,7 +15,7 @@
 							{{#each burgerAvailable}}
 								<tr>
 									<td>{{burger_name}}</td>
-									<td><button type="button" class="btn btn-info" aria-label="Center Align"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+									<td><button type="button" class="btn btn-info" aria-label="Center Align" action="/{{this.burger_id}}?_method=PUT" method="POST"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 								</tr>
 							{{/each}}
 						</table>
