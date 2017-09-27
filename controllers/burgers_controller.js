@@ -1,23 +1,8 @@
 //Dependencies
 var express = require("express");
-var Burger = require("../models/burger.js");
-var bodyParser = require("body-parser");
-var brouter = express();
-var handlebars = require("express-handlebars");
+var burger = require("../models/burger.js");
+var brouter = express.Router();
 var path = require("path");
-
-//Set up burger model
-var burger = new Burger();
-
-//Set up parsing
-brouter.use(bodyParser.json());
-brouter.use(bodyParser.urlencoded({ extended: true }));
-brouter.use(bodyParser.text());
-brouter.use(bodyParser.json({ type: "application/vnd.api+json" }));
-
-//Establish handlebars engine
-brouter.engine("handlebars", handlebars({ defaultLayout: "main" }));
-brouter.set("view engine", "handlebars");
 
 //Route for CSS
 brouter.get("/style", function(req, res){
