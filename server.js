@@ -3,8 +3,6 @@ var express = require("express");
 var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
 var handlebars = require("express-handlebars");
-var path = require("path");
-var router = express.Router();
 var brouter = require("./controllers/burgers_controller.js");
 
 //Set up Express
@@ -19,10 +17,7 @@ app.set("view engine", "handlebars");
 
 //Send to controller
 app.use(express.static(__dirname + '/public'))
-app.use("/", router);
-router.get("/", brouter);
-router.put("/:id", brouter);
-router.get("/style", brouter);
+app.use("/", brouter);
 
 //Initialize server
 app.listen(PORT, function() {
