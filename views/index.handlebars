@@ -15,7 +15,13 @@
 							{{#each burgerAvailable}}
 								<tr>
 									<td>{{burger_name}}</td>
-									<td><button type="button" class="btn btn-info" aria-label="Center Align" action="/{{this.burger_id}}?_method=PUT" method="POST"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+									<td>
+										<form action="/{{id}}?_method=PUT" method="POST">
+  										<input type="hidden" name="id" value="{{id}}">
+  										<button type="submit"class="btn btn-info" aria-label="Center Align" >
+												<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  										</button>
+										</form>
 								</tr>
 							{{/each}}
 						</table>
@@ -54,7 +60,7 @@
   			<form method="POST" action="/" class="form-inline">
   				<div class="form-group">
     				<label for="burgerName">Add a Burger to Eat</label>
-    				<input type="input" class="form-control" id="burgerName" placeholder="Burger Name">
+    				<input type="input" class="form-control" id="burgerName" name="burgerName" placeholder="Burger Name">
   				</div> <!--/.form-group-->
   				<button type="submit" class="btn btn-info">Submit</button>
 				</form>
@@ -64,11 +70,11 @@
     			<label for="burgerName">Edit a Burger</label>
   				<select name="id" class="form-control">
 						{{#each burgerAvailable}}
-							<option value="{{this.burger_id}}">{{this.burger_name}}</option>
+							<option value="{{this.id}}">{{this.burger_name}}</option>
 						{{/each}}
 					</select>
   				<div class="form-group">
-    				<input type="input" class="form-control" id="burgerName" placeholder="New Burger Name">
+    				<input type="input" class="form-control" id="burgerName" name="burgerName" placeholder="New Burger Name">
   				</div> <!--/.form-group-->
   				<button type="submit" class="btn btn-info">Save</button>
 				</form>				
